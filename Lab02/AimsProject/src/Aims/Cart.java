@@ -1,4 +1,6 @@
-package Aims;
+package hust.soict.dsai.aims.cart;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -12,6 +14,27 @@ public class Cart {
 		}
 		return "The cart is almost full";
 	}
+	public String addDigitalVideoDisc(DigitalVideoDisc[] discs) {
+		if (qtyOrdered + discs.length <= MAX_NUMBERS_ORDERED) {
+			for(int i=0;i<discs.length;i++){
+				itemsOrdered[qtyOrdered] = discs[i];
+				qtyOrdered += 1;
+			}
+			return "The disc has been added" ;
+		}
+		return "The cart is almost full";
+	}
+	public String addDigitalVideoDisc(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
+		if (qtyOrdered +2 <= MAX_NUMBERS_ORDERED) {
+			itemsOrdered[qtyOrdered] = disc1;
+			qtyOrdered += 1;
+			itemsOrdered[qtyOrdered] = disc2;
+			qtyOrdered += 1;
+			return "The disc has been added" ;
+		}
+		return "The cart is almost full";
+	}
+	
 	public String removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		int p=-1;
 		for (int i=0;i<qtyOrdered;i++) {
@@ -33,4 +56,16 @@ public class Cart {
 		for (int i=0;i<qtyOrdered;i++)res+=itemsOrdered[i].getCost();
 		return res;
 	}
+	 public void print() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items: ");
+        float totalCost = 0;
+        for (int i = 0; i < qtyOrdered; i++) {
+//            DigitalVideoDisc disc = itemsOrdered[i];
+            System.out.println((i + 1) + ". " + itemsOrdered[i].toString());
+            totalCost += itemsOrdered[i].getCost();
+        }
+        System.out.println("Total cost: " + totalCost + " $");
+        System.out.println("***************************************************");
+    }
 }
