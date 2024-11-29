@@ -1,66 +1,45 @@
 package hust.soict.dsai.aims.disc;
 
-public class DigitalVideoDisc {
+import hust.soict.dsai.aims.media.Disc;
+import hust.soict.dsai.aims.media.Playable;
+
+public class DigitalVideoDisc extends Disc implements Playable{
 	private static int nbDigitalVideoDiscs=0;
-	private String title;
-	private String category;
-	private String director;
-	private int length;
-	private float cost;
-	public String getTitle() {
-		return title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public String getDirector() {
-		return director;
-	}
-	public int getLength() {
-		return length;
-	}
-	public float getCost() {
-		return cost;
-	}
 	public DigitalVideoDisc(String title) {
-		super();
+		super(nbDigitalVideoDiscs, title, "", 0); 
 		nbDigitalVideoDiscs+=1;
-		this.title = title;
 	}
 	public DigitalVideoDisc(String title, String category, float cost) {
-		super();
+		super(nbDigitalVideoDiscs,title,category,cost);
 		nbDigitalVideoDiscs+=1;
-
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
+		
 	}
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
+		super(nbDigitalVideoDiscs,title,category,cost,director,0);
 		nbDigitalVideoDiscs+=1;
-
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
+		super(nbDigitalVideoDiscs,title,category,cost,director, length);
 		nbDigitalVideoDiscs+=1;
-
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.length = length;
-		this.cost = cost;
 	}
 	public void setTitle(String newTitle) {
 		// TODO Auto-generated method stub
-		title = newTitle;
+		super.setTitle(newTitle);
 		
 	}
+	
     public String toString() {
-        return "DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
+        return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + getDirector() + " - " + getLength() + ": " + this.getCost() + " $";
+    }
+    @Override
+    public void play() {
+    	if (getLength()>0) {
+    		System.out.println("Playing DVD: " + getTitle());
+    		System.out.println("DVD length: " + getLength());
+    		
+    	} else {
+    		System.out.println("ERROR: DVD length is 0.");
+    	}
     }
     
     
