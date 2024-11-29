@@ -7,6 +7,11 @@ public class Cart {
 	private Media itemsOrdered[] = new Media[MAX_NUMBERS_ORDERED];
 	private int qtyOrdered = 0;
 	public String addMedia(Media media) {
+		for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].equals(media)) {
+                return "This media is already in the cart.";
+            }
+        }
 		if (qtyOrdered < MAX_NUMBERS_ORDERED) {
 			itemsOrdered[qtyOrdered] = media;
 			qtyOrdered += 1;
@@ -14,7 +19,7 @@ public class Cart {
 		}
 		return "The cart is almost full";
 	}
-	public String addDigitalVideoDisc(Media[] medias) {
+	public String addMedia(Media[] medias) {
 		if (qtyOrdered + medias.length <= MAX_NUMBERS_ORDERED) {
 			for(int i=0;i<medias.length;i++){
 				itemsOrdered[qtyOrdered] = medias[i];
@@ -24,7 +29,7 @@ public class Cart {
 		}
 		return "The cart is almost full";
 	}
-	public String addDigitalVideoDisc(Media media1, Media media2) {
+	public String addMedia(Media media1, Media media2) {
 		if (qtyOrdered +2 <= MAX_NUMBERS_ORDERED) {
 			itemsOrdered[qtyOrdered] = media1;
 			qtyOrdered += 1;
@@ -35,7 +40,7 @@ public class Cart {
 		return "The cart is almost full";
 	}
 	
-	public String removeDigitalVideoDisc(Media media) {
+	public String removeMedia(Media media) {
 		int p=-1;
 		for (int i=0;i<qtyOrdered;i++) {
 			if (itemsOrdered[i]==media) {

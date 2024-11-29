@@ -44,6 +44,14 @@ public class CompactDisc extends Disc implements Playable{
 			track.play();
 		}
 	}
+	public void addTrack(Track track) {
+        if (tracks.contains(track)) {
+            System.out.println("The track already exists in the CD.");
+        } else {
+            tracks.add(track);
+            System.out.println("The track has been added to the CD: " + track.getTitle());
+        }
+    }
 
 
 }

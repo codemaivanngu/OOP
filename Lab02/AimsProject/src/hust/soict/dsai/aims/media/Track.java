@@ -37,4 +37,12 @@ public class Track implements Playable{
 			System.out.println("ERROR: Track length is 0.");
 		}
 	}
+	
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result = 31 * result + length;
+        return result;
+    }
+
 }
