@@ -1,17 +1,9 @@
 package hust.soict.dsai.aims.disc;
 
-import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Disc;
 
-public class DigitalVideoDisc extends Media{
+public class DigitalVideoDisc extends Disc{
 	private static int nbDigitalVideoDiscs=0;
-	private String director;
-	private int length;
-	public String getDirector() {
-		return director;
-	}
-	public int getLength() {
-		return length;
-	}
 	public DigitalVideoDisc(String title) {
 		super(nbDigitalVideoDiscs, title, "", 0); 
 		nbDigitalVideoDiscs+=1;
@@ -22,23 +14,21 @@ public class DigitalVideoDisc extends Media{
 		
 	}
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super(nbDigitalVideoDiscs,title,category,cost);
+		super(nbDigitalVideoDiscs,title,category,cost,director,0);
 		nbDigitalVideoDiscs+=1;
-		this.director = director;
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super(nbDigitalVideoDiscs,title,category,cost);
+		super(nbDigitalVideoDiscs,title,category,cost,director, length);
 		nbDigitalVideoDiscs+=1;
-		this.director = director;
-		this.length = length;
 	}
 	public void setTitle(String newTitle) {
 		// TODO Auto-generated method stub
 		super.setTitle(newTitle);
 		
 	}
+	
     public String toString() {
-        return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + director + " - " + length + ": " + this.getCost() + " $";
+        return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + getDirector() + " - " + getLength() + ": " + this.getCost() + " $";
     }
     
     
