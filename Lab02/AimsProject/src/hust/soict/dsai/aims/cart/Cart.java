@@ -1,6 +1,8 @@
 package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.Media;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -61,7 +63,7 @@ public class Cart {
 		for (int i=0;i<qtyOrdered;i++)res+=itemsOrdered[i].getCost();
 		return res;
 	}
-	 public void print() {
+	public void print() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items: ");
         float totalCost = 0;
@@ -71,5 +73,13 @@ public class Cart {
         }
         System.out.println("Total cost: " + totalCost + " $");
         System.out.println("***************************************************");
+    }
+	public void sortByTitle() {
+        Arrays.sort(itemsOrdered, 0, qtyOrdered, Comparator.comparing(Media::getTitle));
+        System.out.println("Items have been sorted by title.");
+    }
+	public void sortByCost() {
+        Arrays.sort(itemsOrdered, 0, qtyOrdered, Comparator.comparing(Media::getCost).reversed());
+        System.out.println("Items have been sorted by cost in descending order.");
     }
 }

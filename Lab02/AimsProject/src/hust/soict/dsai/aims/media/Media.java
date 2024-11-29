@@ -47,6 +47,10 @@ public class Media {
 	public int hashCode() {
 		return title.hashCode();
 	}
+	@Override
+	public String toString() {
+	    return "Media - Title: " + title + ", Category: " + category + ", Cost: " + cost + " $";
+	}
 	
 	
 

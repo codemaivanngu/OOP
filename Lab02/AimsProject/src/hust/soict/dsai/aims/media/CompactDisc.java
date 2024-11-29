@@ -12,16 +12,19 @@ public class CompactDisc extends Disc implements Playable{
 	public CompactDisc(int id, String title, String category, float cost) {
 		super(id, title, category, cost);
 		// TODO Auto-generated constructor stub
+		tracks = new ArrayList<>();  
 	}
 
 	public CompactDisc(int id, String title, String category, float cost, String directory, int length) {
 		super(id, title, category, cost, directory, length);
 		// TODO Auto-generated constructor stub
+		tracks = new ArrayList<>();  
 	}
 	public CompactDisc(int id, String title, String category, float cost, String directory, int length, String artist) {
 		super(id, title, category, cost, directory, length);
 		// TODO Auto-generated constructor stub
 		this.artist = artist;
+		tracks = new ArrayList<>();  
 	}
 	public String getArtist() {
 		return artist;
