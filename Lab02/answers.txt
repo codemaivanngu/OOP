@@ -1,3 +1,12 @@
-Question:- If you create a constructor method to build a DVD by title then create a constructor method to
-build a DVD by category. Does JAVA allow you to do this?: 
-Answer: no, because title and category have the same string type, so java can not recognize which function is called
+1. The Media class should implement the Comparable interface because Media is the base class for all types of media DVD, CD, Book -> all class have natural ordering.
+
+2. 
+@Override
+public int compareTo(Media other) {
+    int titleComparison = this.title.compareToIgnoreCase(other.title);
+    if (titleComparison != 0) {
+        return titleComparison; 
+    }
+    return Float.compare(this.cost, other.cost); 
+}
+3. No. Comparable interface allows 1 ordering only because only have 1 compareTo() method in a class.
