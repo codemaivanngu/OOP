@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public class CompactDisc extends Disc implements Playable{
 	String artist;
 	ArrayList<Track> tracks;
-	public CompactDisc() {
+	public CompactDisc(String artist2, String title, String category, String string, float cost) {
 		// TODO Auto-generated constructor stub
+		super(-1, title, category, cost, "", -1);
+
 	}
 
 	public CompactDisc(int id, String title, String category, float cost) {

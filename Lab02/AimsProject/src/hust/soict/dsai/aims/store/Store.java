@@ -1,6 +1,8 @@
 // Store.java
 package hust.soict.dsai.aims.store;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -45,5 +47,22 @@ public class Store {
         {
         	System.out.println( itemsInStore[i].toString());
         }
+    }
+ // Method to search for a media item by title
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+    public ObservableList<Media> getItemsInStore() {
+        ObservableList<Media> mediaInStore = FXCollections.observableArrayList();
+        for (int i = 0; i < qtyStore; i++) {
+            mediaInStore.add(itemsInStore[i]);
+        }
+        return mediaInStore;
     }
 }
